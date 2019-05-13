@@ -12,13 +12,22 @@
   </head>
 
   <body>
-    <nav class="navbar navbar-light bg-light">
+    <!-- <nav class="navbar navbar-light bg-light">
       <span class="navbar-brand mb-0 h1">Navbar</span>
       <ul class="navbar-nav mr-auto">
         <li class="nav-item">
           <a class="nav-link" href="/new">New Game</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/new?reset=true">Reset Score</a>
+        </li>
       </ul>
+    </nav> -->
+
+    <nav class="navbar navbar-light bg-light">
+      <span class="navbar-brand mb-0 h1">Navbar</span>
+      <a class="nav-link" href="/new">New Game</a>
+      <a class="nav-link" href="/new?reset=true">Reset Score</a>
     </nav>
     <div class="container">
       <%= yield %>

@@ -8,6 +8,7 @@ class GamesController < ApplicationController
   NUM_OF_LETTERS = 10
 
   def new
+    session["total_score"] = 0 if params["reset"] == "true"
     @available_letters = []
     NUM_OF_LETTERS.times do
       index = rand(25)
@@ -28,6 +29,10 @@ class GamesController < ApplicationController
     dict = open("https://wagon-dictionary.herokuapp.com/#{@try}").read
     @exists = JSON.parse(dict)["found"]
     @score = (@try.length.to_f / @time_diff * 100).round
+    if @exists && @can_be_built
+      session["total_score"] = session["total_score"] ? session["total_score"] + @score : @score
+    end
+    @total_score = session["total_score"]
   end
 
   def word_in_grid?(word, letters)
